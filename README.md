@@ -24,4 +24,4 @@ You can access our Jupiter Notebook Here that contains our Data Exploration [![m
 
 ## Data Download
 
-You can download our data from Kaggle here [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
+You can download our data from Kaggle Data here [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
