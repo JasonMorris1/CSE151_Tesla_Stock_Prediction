@@ -50,14 +50,13 @@ You can download our data from Kaggle here [[Tesla Stock Price](https://www.kagg
 
 
 ## 3 Evaluation
-The logistic regression model performed with about 50% accuracy & precision which is like a random guess. The model has high recall, because of bias towards increasing price and thus minimizing false negatives.
-Test VS Train - The results of all (accuracy, recall, F1 Score) were quite close for both and thus no sign of overfitting.
+The first model that we decided to train was logistic regression. We used the classification report to do the analysis. It performed with about 50% accuracy & precision due to some randomness in its predication algorithm. The model has high recall, because of bias towards increasing price which results in minimizing false negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model.
 
 ## 4 Fitting
-We can clearly see from graph that fitting graph (confusion matrix) that model predict increase in Stock price almost 98% of times which makes sense during the given period of Tesla's growth.
-We aim to minimize this bias using models which can also predict the potential price decreases. This can by penalizing the false negatives and encouraging true negatives.
+We can clearly see from the fitting graph (confusion matrix) that model predicts increase in Stock price almost 98% of times which alligns with the given period of Tesla's growth observed in our dataset.
+We aim to minimize this bias using models which can also predict the potential price decrease. This can be done by penalizing the false negatives and encouraging true negatives.
 
 ## 6 Conclusion and Potential Improvement
 Overall, logistic regression model is not great for continuing in future and can be treated as a baseline. 
-The logistic regression model cannot capture the complexity involved so we are trying the **Neural Net** which may or may not improve in accuracy but can capture more information from stock price movements. We have also tried Linear Regression in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
+The logistic regression model cannot capture the complexity involved so we are trying the **Neural Net** which may or may not improve in accuracy but can study the vast variations in the stock price movements. We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
 
