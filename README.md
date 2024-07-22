@@ -55,6 +55,7 @@ The first model that we decided to train was logistic regression. We used the cl
 ## 4 Fitting
 We can clearly see from the fitting graph (confusion matrix) that model predicts increase in Stock price almost 98% of times which alligns with the given period of Tesla's growth observed in our dataset.
 We aim to minimize this bias using models which can also predict the potential price decrease. This can be done by penalizing the false negatives and encouraging the true negatives.
+![Confusion Matrix Logistic Regression](/plots/confusion_matrix_logistic.png)
 
 ## 6 Conclusion and Potential Improvement
 Overall, logistic regression model which was our first attempt is not great for continuing in future as summarised above. 
