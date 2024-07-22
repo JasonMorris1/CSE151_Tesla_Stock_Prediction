@@ -53,7 +53,7 @@ You can download our data from Kaggle here [[Tesla Stock Price](https://www.kagg
 The first model that we decided to train was logistic regression. We used the classification report to do the analysis. It performed with about 50% accuracy & precision due to some randomness in its predication algorithm. The model has high recall, because of bias towards increasing price which results in minimizing false negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model.
 
 ## 4 Fitting
-We can clearly see from the fitting graph (confusion matrix) that model predicts increase in Stock price almost 98% of times which alligns with the given period of Tesla's growth observed in our dataset.
+We can clearly see from the fitting graph (confusion matrix) that the model predicts an increase in the Stock price almost 98% of the time which alligns with the given period of Tesla's growth observed in our dataset.
 We aim to minimize this bias using models which can also predict the potential price decrease. This can be done by penalizing the false positives and encouraging the true negatives.
 
 ## 6 Conclusion and Potential Improvement
