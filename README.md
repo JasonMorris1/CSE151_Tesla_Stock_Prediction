@@ -59,5 +59,5 @@ We aim to minimize this bias using models which can also predict the potential p
 ## 6 Conclusion and Potential Improvement
 Overall, logistic regression model which was our first attempt is not great for continuing in future as summarised above. 
 Since the logistic regression model could not capture the complexity involved, we made an attempt towards creating a **Neural Network** which may or may not improve in accuracy but can study the vast variations in the stock price movements. 
-We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
+We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvement in binary prediction after a regression on stock price values.
 
