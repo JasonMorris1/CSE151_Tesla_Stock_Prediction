@@ -47,3 +47,17 @@ For simple and exponential moving averages (SMA/EMA), we realized the values wer
 
 ## Data Download
 You can download our data from Kaggle here [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
+
+
+## 3 Evaluation
+The logistic regression model performed with about 50% accuracy & precision which is like a random guess. The model has high recall, because of bias towards increasing price and thus minimizing false negatives.
+Test VS Train - The results of all (accuracy, recall, F1 Score) were quite close for both and thus no sign of overfitting.
+
+## 4 Fitting
+We can clearly see from graph that fitting graph (confusion matrix) that model predict increase in Stock price almost 98% of times which makes sense during the given period of Tesla's growth.
+We aim to minimize this bias using models which can also predict the potential price decreases. This can by penalizing the false negatives and encouraging true negatives.
+
+## 6 Conclusion and Potential Improvement
+Overall, logistic regression model is not great for continuing in future and can be treated as a baseline. 
+The logistic regression model cannot capture the complexity involved so we are trying the **Neural Net** which may or may not improve in accuracy but can capture more information from stock price movements. We have also tried Linear Regression in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
+
