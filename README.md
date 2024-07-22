@@ -54,9 +54,10 @@ The first model that we decided to train was logistic regression. We used the cl
 
 ## 4 Fitting
 We can clearly see from the fitting graph (confusion matrix) that model predicts increase in Stock price almost 98% of times which alligns with the given period of Tesla's growth observed in our dataset.
-We aim to minimize this bias using models which can also predict the potential price decrease. This can be done by penalizing the false negatives and encouraging true negatives.
+We aim to minimize this bias using models which can also predict the potential price decrease. This can be done by penalizing the false negatives and encouraging the true negatives.
 
 ## 6 Conclusion and Potential Improvement
-Overall, logistic regression model is not great for continuing in future and can be treated as a baseline. 
-The logistic regression model cannot capture the complexity involved so we are trying the **Neural Net** which may or may not improve in accuracy but can study the vast variations in the stock price movements. We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
+Overall, logistic regression model which was our first attempt is not great for continuing in future as summarised above. 
+Since the logistic regression model could not capture the complexity involved, we made an attempt towards creating a **Neural Network** which may or may not improve in accuracy but can study the vast variations in the stock price movements. 
+We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvemnet in binary prediction after a regression on stock price values.
 
