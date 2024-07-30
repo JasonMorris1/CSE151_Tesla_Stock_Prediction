@@ -41,12 +41,24 @@ The first model that we decided to train was Logistic regression. We used the cl
 # Results 
 ## This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
 
+
+We experimented with other models such as linear regression. When we plotted the actual stock prices against the predicted ones, the graph showed a close resemblance. We chose to use linear regression as a baseline for our other models. If our other models cannot outperform linear regression, we can conclude that they are not effective at predicting Tesla’s stock price. Looking at our linear regression model we had a MSE of 86.87 and a mean absolute error of 6.93. When we compare our predicted price to the actual closing price that day, we convert our prediction into a binary format: 1 if the stock is predicted to close higher, and 0 if it is predicted to close lower. Our model has a 51% accuracy. This model has very poor performance, equivalent to randomly predicting whether the stock price will increase or decrease for that day. Looking at the linear regression coefficients, the one with the most weight was the closing price, with a value of 0.98. This isn’t very surprising, as the model essentially uses the closing price to predict the next day's closing price, which is often quite similar to the previous day's closing price. If we drop the closing price from the feature list, the highest coefficient becomes 3.2 for the MACD. MACD closely follows stock prices because it is derived from the stock’s moving averages, which is inherently based on past price data. Dropping close feature linear regression achieves an accuracy of 50%. In essence, this model leverages past price history and a weighted combination of various technical indicators, which are primarily based on historical price data, to predict the next day's closing price. With an accuracy near or at 50%, this model performs as poorly as possible, effectively no better than random guessing. An accuracy below 50% would mean our predictions are consistently wrong, allowing us to reverse the predictions and achieve an accuracy of 1 minus the reported accuracy which would be above 50%. Our model seems to be non-linear, so we decided to try other models that are better suited for predicting non-linear data.
+
+![Linear Regression Plot](/plots/linear_regression.png)
+
+
+
+
+
+
 ## Data exploration 
 ## Preprocessing 
 ## Model 1 
 The first model that we decided to train was Logistic regression. We used the classification report to do the analysis. It performed with about 50% accuracy & precision due to some randomness in its predication algorithm. The model has a high recall, because of bias towards increasing price which results in minimizing the False negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model.
 ## Model 2 
 ## Additional Models 
+
+
 
 # Discussion 
 ## This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!
