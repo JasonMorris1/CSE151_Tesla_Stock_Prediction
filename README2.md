@@ -7,8 +7,7 @@ The proposed dataset contains time series information about Tesla share prices, 
 Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
 
 Why was it chosen? 
-Why is it cool? Discuss the general/broader impact of having a good predictive mode. i.e. why is this important?
-
+Our aim with this project was to build a Machine Learning model that could predict if the Tesla stock price would go up or down in the future. The importance of this model is that it efficiently allows one to study the market well. It allows one to detect the pattern of the stock and then helps to decide if a particular investment would be helpful or not. It also reduces the risk one might face while investing, allowing them to create an emminent balance between the risk and return. We also felt that this model could be used to research and predict the economic conditions of the market in the future. Using the growth/decay pattern of this model,researchers can draw analogies between the times when the model showed growth/decay and the economy during that time to predict how similar situations in the future are going to effect the market. It also helps in ensuring economic stabilites and could be used to warn against potential market disruptions. This intersection between finance and technology also helps to study the market better and creates space for innovative new techniques to help the economy grow.
 # Figures
 Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.
 
