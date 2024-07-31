@@ -77,13 +77,13 @@ This model was chosen to fulfill the classification part of our goal, where we w
 Although a failure, this helped us learn that we needed to be more mindful about how we were processing data before sending it into the model, and what kinds of models we wanted to explore next. As a result, it was a very good learning experience. 
 
 ## Model 2 Linear Regression
-
-
-
-
-
+The linear regression model had a mean squarred error of 158.58 and a mae of 9.86. 
+The model accruay was 51%. The recall for the stock price will increase class was 0.50 and the precision was 0.52. The recall and precision for the stock will decrease class was 0.49 and 0.51.
 
 ![Linear Regression Plot](/plots/linear_regression.png)
+
+![Linear Regression Plot](/plots/linear_regression_pie.png)
+
 
 ## Model 3 LSTM
 
