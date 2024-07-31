@@ -34,7 +34,27 @@ yhat_train = logreg.predict(X_train)
 
 ## Model 2 - XGB @Anuj
 
-## Model 3 - LSTM @Jason
+## Model 3 - LSTM
+
+For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature.
+
+```python
+regressor = Sequential()
+
+regressor.add(LSTM(units = 80, activation = 'relu', return_sequences = True, input_shape = (X_train.shape[1], 15)))
+regressor.add(Dropout(0.2))
+
+regressor.add(LSTM(units = 90, activation = 'relu', return_sequences = True))
+regressor.add(Dropout(0.3))
+
+regressor.add(LSTM(units = 100, activation = 'relu', return_sequences = True))
+regressor.add(Dropout(0.4))
+
+regressor.add(LSTM(units = 120, activation = 'relu'))
+regressor.add(Dropout(0.5))
+
+regressor.add(Dense(units = 1))
+```
 
 ## Model 4  - Linear Regression ? 
 
@@ -61,6 +81,10 @@ We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Te
 
 # Conclusion 
 ## This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.
+
+
+Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
+
 
 # Statement of collaboration 
 This is a statement of contribution by each member. This will be taken into consideration when making the final grade for each member in the group. Did you work as a team? was there a team leader? project manager? coding? writer? etc. Please be truthful about this as this will determine individual grades in participation. There is no job that is better than the other. If you did no code but did the entire write up and gave feedback during the steps and collaborated then you would still get full credit. If you only coded but gave feedback on the write up and other things, then you still get full credit. If you managed everyone and the deadlines and setup meetings and communicated with teaching staff only then you get full credit. Every role is important as long as you collaborated and were integral to the completion of the project. If the person did nothing. they risk getting a big fat 0. Just like in any job, if you did nothing, you have the risk of getting fired. Teamwork is one of the most important qualities in industry and academia!
