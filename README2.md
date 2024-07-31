@@ -4,6 +4,8 @@
 # Abstract
 The proposed dataset contains time series information about Tesla share prices, along with technical stock analysis features such as the relative strength index (RSI), simple and exponential moving averages, bollinger bands, and more. In our project, we use this information to train models that will predict the close price of the stock the next day (continuous values) and also provide a binary prediction of whether the stock price will go up or down, or stay in the middle (1, -1). This will allow us to explore using different types of models in the class. 
 
+Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
+
 Why was it chosen? 
 Why is it cool? Discuss the general/broader impact of having a good predictive mode. i.e. why is this important?
 
