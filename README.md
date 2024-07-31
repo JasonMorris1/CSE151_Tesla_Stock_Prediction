@@ -1,41 +1,5 @@
 # CSE151_Tesla_Stock_Prediction
 
-## Introduction 
-
-## Figures
-
-## Methods 
-
-### Data Exploration 
-
-### Preprocessing 
-
-### Model 1  - Logistic Regression 
-
-### Model 2 - XGB Regressor 
-
-### Model 3 - LSTM
-
-### Model 4 - Linear Regression 
-
-## Results 
-
-## Discussion 
-
-## Conclusion 
-
-## Statement of Collaboration 
-
-Aarush Mehrotra:
-
-Anuj Jain:
-
-Jason Morris:
-
-Rishika Kejriwal:
-
-Vandita Jain: 
-
 **Authors**
 
 - [Aarush Mehrotra](https://github.com/iAarush),
