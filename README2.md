@@ -32,7 +32,7 @@ As a result of our preprocessing, we removed multiple columns to avoid endogenou
 
 For simple and exponential moving averages (SMA/EMA), we realized the values were very similar to each other. As a result, we only kept the 100-day EMA value. This will simplify the model and hopefully avoid both overfitting and endogenous variables in the model. 
 
-## Model 1 
+## Model 1 @Aarush
 The first model that we decided to train was Logistic regression. We used the classification report to do the analysis. It performed with about 50% accuracy & precision due to some randomness in its predication algorithm. The model has a high recall, because of bias towards increasing price which results in minimizing the False negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model.
 
 ## Model 2 
@@ -53,7 +53,7 @@ We experimented with other models such as linear regression. When we plotted the
 
 ## Data exploration 
 ## Preprocessing 
-## Model 1 
+## Model 1 @Aarush
 The first model that we decided to train was Logistic regression. We used the classification report to do the analysis. It performed with about 50% accuracy & precision due to some randomness in its predication algorithm. The model has a high recall, because of bias towards increasing price which results in minimizing the False negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model.
 ## Model 2 
 ## Additional Models 
@@ -62,7 +62,7 @@ The first model that we decided to train was Logistic regression. We used the cl
 
 # Discussion 
 ## This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!
-## Model 1 
+## Model 1 @Aarush
 Overall, the Logistic regression model which was our first attempt is not great for continuing in the future as summarised above. 
 Since the Logistic regression model could not capture the complexity involved, we made an attempt towards creating a **Neural Network** which may or may not improve in accuracy but can study the vast variations in the stock price movements. 
 We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvement in the binary prediction after a regression on stock price values.
