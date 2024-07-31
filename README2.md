@@ -31,12 +31,21 @@ yhat_test = logreg.predict(X_test)
 yhat_train = logreg.predict(X_train)
 ``` 
 
+## Model 2 Linear Regression
 
-## Model 2 - XGB @Anuj
+This was the second model we tried. For our training set we used the data from 2014-2022 and the testing data was from 2022-2023.The features we used were volume, rsi_7, rsi_14, cci_7, sma_50, ema_50, sma_100, ema_100, macd, bollinger, TrueRange, atr_7 and atr_14
+
+```python
+linreg = LinearRegression()
+linreg.fit(X_train, y_train)
+y_pred = linreg.predict(X_test)
+```
+
+## Model ? - XGB @Anuj
 
 ## Model 3 - LSTM
 
-For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature. The LSTM model uses the data from the previous 40 days to predict the stock price on each day. For each LSTM layer, we initially used a small number of units, ranging from 50 to 100. We then increased the number of units to between 80 and 120 in an attempt to improve model accuracy, but observed little to no effect. For each layer we used the relu activation function.
 
 ```python
 regressor = Sequential()
@@ -56,8 +65,6 @@ regressor.add(Dropout(0.5))
 regressor.add(Dense(units = 1))
 ```
 
-## Model 4  - Linear Regression ? 
-
 # Results 
 
 This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
@@ -67,12 +74,30 @@ This model was chosen to fulfill the classification part of our goal, where we w
 
 Although a failure, this helped us learn that we needed to be more mindful about how we were processing data before sending it into the model, and what kinds of models we wanted to explore next. As a result, it was a very good learning experience. 
 
-We experimented with other models such as linear regression. When we plotted the actual stock prices against the predicted ones, the graph showed a close resemblance. We chose to use linear regression as a baseline for our other models. If our other models cannot outperform linear regression, we can conclude that they are not effective at predicting Tesla’s stock price. Looking at our linear regression model we had a MSE of 86.87 and a mean absolute error of 6.93. When we compare our predicted price to the actual closing price that day, we convert our prediction into a binary format: 1 if the stock is predicted to close higher, and 0 if it is predicted to close lower. Our model has a 51% accuracy. This model has very poor performance, equivalent to randomly predicting whether the stock price will increase or decrease for that day. Looking at the linear regression coefficients, the one with the most weight was the closing price, with a value of 0.98. This isn’t very surprising, as the model essentially uses the closing price to predict the next day's closing price, which is often quite similar to the previous day's closing price. If we drop the closing price from the feature list, the highest coefficient becomes 3.2 for the MACD. MACD closely follows stock prices because it is derived from the stock’s moving averages, which is inherently based on past price data. Dropping close feature linear regression achieves an accuracy of 50%. In essence, this model leverages past price history and a weighted combination of various technical indicators, which are primarily based on historical price data, to predict the next day's closing price. With an accuracy near or at 50%, this model performs as poorly as possible, effectively no better than random guessing. An accuracy below 50% would mean our predictions are consistently wrong, allowing us to reverse the predictions and achieve an accuracy of 1 minus the reported accuracy which would be above 50%. Our model seems to be non-linear, so we decided to try other models that are better suited for predicting non-linear data.
+## Model 2 Linear Regression
+
+
+
+
+
 
 ![Linear Regression Plot](/plots/linear_regression.png)
 
+## Model 3 LSTM
+
+The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.41. Coverting the price prediction into classification gives an accuracy of 52%. For the prediction the stock price will increase we had a prevision of 0.43 and recall of 0.54. The prediction the stock will decrease had a precision of 0.62 and recall of 0.51.
+![LSTM Plot](/plots/lstm_fig.png)
+
+
+
 # Discussion 
 This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!
+
+
+We experimented with other models such as linear regression. When we plotted the actual stock prices against the predicted ones, the graph showed a close resemblance. We chose to use linear regression as a baseline for our other models. If our other models cannot outperform linear regression, we can conclude that they are not effective at predicting Tesla’s stock price. Looking at our linear regression model we had a MSE of 86.87 and a mean absolute error of 6.93. When we compare our predicted price to the actual closing price that day, we convert our prediction into a binary format: 1 if the stock is predicted to close higher, and 0 if it is predicted to close lower. Our model has a 51% accuracy. This model has very poor performance, equivalent to randomly predicting whether the stock price will increase or decrease for that day. Looking at the linear regression coefficients, the one with the most weight was the closing price, with a value of 0.98. This isn’t very surprising, as the model essentially uses the closing price to predict the next day's closing price, which is often quite similar to the previous day's closing price. If we drop the closing price from the feature list, the highest coefficient becomes 3.2 for the MACD. MACD closely follows stock prices because it is derived from the stock’s moving averages, which is inherently based on past price data. Dropping close feature linear regression achieves an accuracy of 50%. In essence, this model leverages past price history and a weighted combination of various technical indicators, which are primarily based on historical price data, to predict the next day's closing price. With an accuracy near or at 50%, this model performs as poorly as possible, effectively no better than random guessing. An accuracy below 50% would mean our predictions are consistently wrong, allowing us to reverse the predictions and achieve an accuracy of 1 minus the reported accuracy which would be above 50%. Our model seems to be non-linear, so we decided to try other models that are better suited for predicting non-linear data.
+
+Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
+
 
 ## Model 1 @Aarush
 Overall, the Logistic regression model which was our first attempt is not great for continuing in the future as summarised above. 
@@ -83,7 +108,7 @@ We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Te
 ## This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.
 
 
-Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
+
 
 
 # Statement of collaboration 
