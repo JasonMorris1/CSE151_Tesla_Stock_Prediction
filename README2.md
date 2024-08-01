@@ -10,21 +10,21 @@ Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tes
 
 
 # Figures
-Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.
+***Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.***
 
 # Methods 
-This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
- Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods
+***This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
+ Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods***
 
 ## Data exploration 
 Our preprocessing began with an exploration of the dataset, using pandas methods such as `head()` and `describe()`. Additionally, we used histograms, pairplots, and correlation matrix visualizations to explore different features of our data and how various columns related to each other. Lastly, we did basic validation to check for NaNs and conflicting data types. 
 
 As a result of our preprocessing, we removed multiple columns to avoid endogenous variable situations, where the model loses accuracy because features are influenced by each other. This would have led to a case where the coefficients from the future model we build would not have been accurate. Specifically, we removed the open, high, and low prices and kept the close prices. This simplifies the dataset, our model, and the task at hand. On the feature side, when we have technical indicators with different time frames we kept only one, such as a Relative Strength Index (RSI) for only 14 day periods instead of both 14 and 7 day periods. A similar change was made for Average True Range (ATR) values, where we also kept the 14 day measurement. For Commodity Channel Index (CCI) values, we kept the 7 day period and dropped the 14 day period measurements. 
 
-For simple and exponential moving averages (SMA/EMA), we realized the values were very similar to each other. As a result, we only kept the 100-day EMA value. This will simplify the model and hopefully avoid both overfitting and endogenous variables in the model. 
+For simple and exponential moving averages (SMA/EMA), we realized the values were very similar to each other. As a result, we only kept the 100-day EMA value. This both simplified our models and helped avoid endogenous variables in the dataset. 
 ## Preprocessing 
 
-## Model 1 @Aarush
+## Model 1
 The first model that we decided to train was Logistic regression. This was a simple, straightforward logistic regression model that directly used features from our dataset (after preprocessing, of course). 
 ```python
 logreg = LogisticRegression(max_iter=10000)
@@ -71,12 +71,12 @@ regressor.add(Dense(units = 1))
 
 This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
 
-## Model 1: Logistic Regression @Aarush
+## Model 1: Logistic Regression
 This model was chosen to fulfill the classification part of our goal, where we wanted to predict whether the stock price would go up or down the next day. Although a relatively simple model, we thought it would be helpful as a baseline and we were hopeful that a simple model would still have an acceptable level of accuracy. Unfortunately, this did not work and the model was highly inaccurate, with a test accuracy of 49.8%, which is more or less random. The model has a high recall, because of bias towards increasing price which results in minimizing the False negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model. We used the `classification_report` method to ascertain these results. 
 
 Although a failure, this helped us learn that we needed to be more mindful about how we were processing data before sending it into the model, and what kinds of models we wanted to explore next. As a result, it was a very good learning experience. 
 
-## Model 2 Linear Regression
+## Model 2: Linear Regression
 The linear regression model had a mean squarred error of 158.58 and a mae of 9.86. 
 The model accruay was 51%. The recall for the stock price will increase class was 0.50 and the precision was 0.52. The recall and precision for the stock will decrease class was 0.49 and 0.51.
 
@@ -85,7 +85,7 @@ The model accruay was 51%. The recall for the stock price will increase class wa
 ![Linear Regression Plot](/plots/linear_regression_pie.png)
 
 
-## Model 3 LSTM
+## Model 3: LSTM
 
 The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.41. Coverting the price prediction into classification gives an accuracy of 52%. For the prediction the stock price will increase we had a prevision of 0.43 and recall of 0.54. The prediction the stock will decrease had a precision of 0.62 and recall of 0.51.
 ![LSTM Plot](/plots/lstm_fig.png)
@@ -93,7 +93,7 @@ The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.
 
 
 # Discussion 
-This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!
+***This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!***
 
 
 
@@ -112,13 +112,13 @@ We decided to try a LSTM model because LSTMs (Long Short-Term memory Models) are
 Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
 
 
-## Model 1 @Aarush
+## Model 1 @Aarush: Should this section be deleted? 
 Overall, the Logistic regression model which was our first attempt is not great for continuing in the future as summarised above. 
 Since the Logistic regression model could not capture the complexity involved, we made an attempt towards creating a **Neural Network** which may or may not improve in accuracy but can study the vast variations in the stock price movements. 
 We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvement in the binary prediction after a regression on stock price values.
 
 # Conclusion 
-## This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.
+***This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.***
 
 
 
@@ -129,6 +129,7 @@ This is a statement of contribution by each member. This will be taken into cons
 Format: Start with Name: Title: Contribution. If the person contributed nothing then just put in writing: Did not participate in the project.
 
 Aarush Mehrotra:
+I helped form the group and schedule many of our discussions, especially in the first few weeks. I contributed to discussions about picking a dataset; helped with the logistic regression, linear regression and XGBoost models; and usually submitted milestones to Gradescope and added team members to the submission. 
 
 Anuj Jain:
 
