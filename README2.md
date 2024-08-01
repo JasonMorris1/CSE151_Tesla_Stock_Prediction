@@ -1,5 +1,5 @@
 # Introduction 
-The stock market bussines is not unknown to common man. The earliest known stock market was founded in Amsterdam in 1611 [(source)](https://www.sofi.com/learn/content/history-of-the-stock-market/#:~:text=Who%20Created%20the%20Stock%20Market,Amsterdam%20stock%20exchange%20was%20created), and financial markets have progessed significantly since then. In the US, stock markets began entering the public consciousness around 1978, when the 401(k) retirement plan was created ( "History of 401(k) Plans: An Update" (PDF). Employee Benefit Research Institute. 2018-11-05). Consequently, a lot of people now choose to invest in stock markets. Stock prices are dynamic and depend on a multitude of factors. The growing popularity of companies such as Tesla make predicting its stock price a very lucrative task if done right. It will not only benefit firms that make market hypothesis but also help induviduals make financial decisions. (Please note that this project is in no way financial advice). 
+The stock market bussines is not unknown to common man. The earliest known stock market was founded in Amsterdam in 1611 (1), and financial markets have progessed significantly since then. In the US, stock markets began entering the public consciousness around 1978, when the 401(k) retirement plan was created (2). Consequently, a lot of people now choose to invest in stock markets. Stock prices are dynamic and depend on a multitude of factors. The growing popularity of companies such as Tesla make predicting its stock price a very lucrative task if done right. It will not only benefit firms that make market hypothesis but also help induviduals make financial decisions. (Please note that this project is in no way financial advice). 
 
 We chose this project because we wanted to use Machine Learning concepts taught in class to create an impact in the real world. Our aim with this project was to build a binary prediction Machine Learning model that could predict if the Tesla stock price would go up or down in the future. This model is important as it would allow an individual to study the Tesla stock price which would help them analyze the stock market better. Having a good predictive model would benefit individuals in financial markets in creating effective hedging statergies and reducing potential losses. It might also reduce investment risk by allowing individuals to better model risk to rewards. This intersection between finance and technology not only helps in understanding the market better but also creates space for new innovative techniques to emerge which can help the economy grow. 
 
@@ -7,7 +7,7 @@ We chose this project because we wanted to use Machine Learning concepts taught 
 #### Figure 1. Tesla Stock Price Chart
 
 # Abstract
-The proposed dataset contains time series information about Tesla share prices, along with technical stock analysis features such as the relative strength index (RSI), simple and exponential moving averages, bollinger bands, and more. In our project, we use this information to train models that will predict the close price of the stock the next day (continuous values) and also provide a binary prediction of whether the stock price will go up or down, or stay in the middle (1, -1). This will allow us to explore using different types of models in the class. 
+We use a dataset that contains time series information about Tesla share prices, along with technical stock analysis features such as the relative strength index (RSI), simple and exponential moving averages, bollinger bands, and more to train models that predict the close price of the stock the next day (continuous values) and also provide a binary prediction of whether the stock price will go up or down, or stay in the middle (1, -1). Our analysis shows limited success in deriving accurate predictions from these models, highlighting limitations of these models when it comes to predicting complex real-world data. 
 
 Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
 
@@ -15,7 +15,7 @@ Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tes
 ***This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
  Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods***
 
-## Data exploration 
+## Data exploration and preprocessing
 Our preprocessing began with an exploration of the dataset, using pandas methods such as `head()` and `describe()`. Additionally, we used histograms, pairplots, and correlation matrix visualizations to explore different features of our data and how various columns related to each other. Lastly, we did basic validation to check for NaNs and conflicting data types. 
 
 ![Pairplot graph](/plots/pair_plot.png)
@@ -38,8 +38,6 @@ For simple and exponential moving averages (SMA/EMA), we realized the values wer
 ![SMA PLOT](/plots/sma.png)
 #### Figure 6. Chart of various TSLA SMA/EMA indicators
 
-## Preprocessing 
-
 ## Model 1
 The first model that we decided to train was Logistic regression. This was a simple, straightforward logistic regression model that directly used features from our dataset (after preprocessing, of course). 
 ```python
@@ -51,7 +49,7 @@ yhat_train = logreg.predict(X_train)
 
 ## Model 2 Linear Regression
 
-This was the second model we tried. For our training set we used the data from 2014-2022 and the testing data was from 2022-2023.The features we used were volume, rsi_7, rsi_14, cci_7, sma_50, ema_50, sma_100, ema_100, macd, bollinger, TrueRange, atr_7 and atr_14
+This was the second model we tried. For our training set we used the data from 2014-2022 and the testing data was from 2022-2023.The features we used were `volume`, `rsi_7`, `rsi_14`, `cci_7`, `sma_50`, `ema_50`, `sma_100`, `ema_100`, `macd`, `bollinger`, `TrueRange`, `atr_7` and `atr_14`.
 
 ```python
 linreg = LinearRegression()
@@ -78,7 +76,7 @@ y_pred_ensemble = (y_pred_xgb + 2*y_pred_rf) / 3
 ```
 ## Model 4 - LSTM
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature. The LSTM model uses the data from the previous 40 days to predict the stock price on each day. For each LSTM layer, we initially used a small number of units, ranging from 50 to 100. We then increased the number of units to between 80 and 120. For each layer we used the relu activation function.
+For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature. The LSTM model uses the data from the previous 40 days to predict the stock price on each day. For each LSTM layer, we initially used a small number of units, ranging from 50 to 100. We then increased the number of units to between 80 and 120. For each layer we used the relu activation function.
 
 ```python
 regressor = Sequential()
@@ -100,10 +98,13 @@ regressor.add(Dense(units = 1))
 
 # Results 
 
-This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.
+***This will include the results from the methods listed above (C). You will have figures here about your results as well. No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.***
 
 ## Model 1: Logistic Regression
 This model was chosen to fulfill the classification part of our goal, where we wanted to predict whether the stock price would go up or down the next day. Although a relatively simple model, we thought it would be helpful as a baseline and we were hopeful that a simple model would still have an acceptable level of accuracy. Unfortunately, this did not work and the model was highly inaccurate, with a test accuracy of 49.8%, which is more or less random. The model has a high recall, because of bias towards increasing price which results in minimizing the False negatives. Further on the Test VS Train analysis, the results of all (accuracy, recall, F1 Score) were quite close for both. This reveals a key concept that the there is no overfitting in the model. We used the `classification_report` method to ascertain these results. 
+
+![Linear Regression Plot](/plots/linear_regression_pie.png)
+#### Figure 7. Pie chart visualization of the logistic regression confusion matrix 
 
 Although a failure, this helped us learn that we needed to be more mindful about how we were processing data before sending it into the model, and what kinds of models we wanted to explore next. As a result, it was a very good learning experience. 
 
@@ -112,19 +113,21 @@ The linear regression model had a mean squarred error of 158.58 and a mae of 9.8
 The model accruay was 51%. The recall for the stock price will increase class was 0.50 and the precision was 0.52. The recall and precision for the stock will decrease class was 0.49 and 0.51.
 
 ![Linear Regression Plot](/plots/linear_regression.png)
+#### Figure 8. Plot of predicted vs. actual values from the linear regression model.  
 
-![Linear Regression Plot](/plots/linear_regression_pie.png)
-
-## Model 4: Ensemble
-The ensemble model demonstrated a slight improvement over individual models. Across different splits, the ensemble model achieved an accuracy of around 48%-57%. Precision and recall metrics varied between splits, indicating a more balanced performance in some cases. 
+## Model 3: Ensemble
+The ensemble model demonstrated a slight improvement over individual models. Across different splits, the ensemble model achieved an accuracy of around 48%-57%. Precision and recall metrics varied between splits, indicating a more balanced performance in some cases. Further exploration, perhaps through a money-weighted backtest, would be helpful to see whether this model makes money in the long term or not. 
 ![Ensemble Pie Chart](/plots/Ensemble_classification.png)
+#### Figure 9. Ensemble classification report 
 
 ![Ensemble Classification](/plots/Ensemble_pie.png)
+#### Figure 10. Pie chart visualization of the ensemble model confusion matrix
 
 ## Model 4: LSTM
 
 The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.41. Coverting the price prediction into classification gives an accuracy of 52%. For the prediction the stock price will increase we had a prevision of 0.43 and recall of 0.54. The prediction the stock will decrease had a precision of 0.62 and recall of 0.51.
 ![LSTM Plot](/plots/lstm_fig.png)
+#### Figure 11. Predicted vs. Real values from the LSTM model
 
 
 
@@ -157,20 +160,17 @@ Despite this improvement, the ensemble model's performance highlights the inhere
 
 The results of the ensemble model are consistent with the understanding that stock prices are inherently unpredictable and influenced by external factors. While combining models showed some benefit, the limitations of our data and approach were evident. The ensemble model's slight improvement suggests that combining different models can help capture more patterns, but there are still significant limitations.
 
-Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
-
-
-## Model 1 @Aarush: Should this section be deleted? 
-Overall, the Logistic regression model which was our first attempt is not great for continuing in the future as summarised above. 
-Since the Logistic regression model could not capture the complexity involved, we made an attempt towards creating a **Neural Network** which may or may not improve in accuracy but can study the vast variations in the stock price movements. 
-We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/eda_linear_regression2.ipynb) in a separate file to see potential improvement in the binary prediction after a regression on stock price values.
+Stock prices can be highly volatile, and Tesla stock price is no exception. Influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news, our model does not account for these variables. Instead, it solely uses technical indicators derived directly from previous price history. This approach has several implications, primarily that it ignores fundamental factors like earning reports and other financial information about the company. Consequently, the models we explored are insufficient for accurately predicting future stock price movements with a dataset solely consisting of technical indicators. It is likely that a different dataset containing more varied indicators or exploring more complex models would yield different results.
 
 # Conclusion 
 ***This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.***
 
 
 
+# Works Cited 
+1: [History of the Stock Market](https://www.sofi.com/learn/content/history-of-the-stock-market/#:~:text=Who%20Created%20the%20Stock%20Market,Amsterdam%20stock%20exchange%20was%20created)
 
+2:  "History of 401(k) Plans: An Update" (PDF). Employee Benefit Research Institute. 2018-11-05
 
 # Statement of collaboration 
 This is a statement of contribution by each member. This will be taken into consideration when making the final grade for each member in the group. Did you work as a team? was there a team leader? project manager? coding? writer? etc. Please be truthful about this as this will determine individual grades in participation. There is no job that is better than the other. If you did no code but did the entire write up and gave feedback during the steps and collaborated then you would still get full credit. If you only coded but gave feedback on the write up and other things, then you still get full credit. If you managed everyone and the deadlines and setup meetings and communicated with teaching staff only then you get full credit. Every role is important as long as you collaborated and were integral to the completion of the project. If the person did nothing. they risk getting a big fat 0. Just like in any job, if you did nothing, you have the risk of getting fired. Teamwork is one of the most important qualities in industry and academia!
