@@ -12,6 +12,28 @@ Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tes
 # Figures
 ***Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.***
 
+![Tesla stock price graph](/plots/stock_price_img.png)
+#### Figure 1. Tesla Stock Price
+
+![Pairplot graph](/plots/pair_plot.png)
+#### Figure 2. PairPlot with histogram on diagonals
+
+![Heatmap graph](/plots/heat_map.png)
+#### Figure 3. correlation coefficient heatmap
+
+
+![SMA PLOT](/plots/sma.png)
+#### Figure 4
+
+
+![bollinger_bands](/plots/bollinger_bands.png)
+#### Figure 5
+
+![RSI](/plots/rsi.png)
+#### Figure 6 RSI
+
+
+
 # Methods 
 ***This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
  Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods***
@@ -108,6 +130,18 @@ In our logistic regression model, we aimed to predict whether the stock price wo
 We experimented with other models such as linear regression. When we plotted the actual stock prices against the predicted ones, the graph showed a close resemblance. We chose to use linear regression as a baseline for our other models. If our other models cannot outperform linear regression, we can conclude that they are not effective at predicting Tesla’s stock price. Looking at our linear regression model we had a MSE of 86.87 and a mean absolute error of 6.93. When we compare our predicted price to the actual closing price that day, we convert our prediction into a binary format: 1 if the stock is predicted to close higher, and 0 if it is predicted to close lower. Our model has a 51% accuracy. This model has very poor performance, equivalent to randomly predicting whether the stock price will increase or decrease for that day. Looking at the linear regression coefficients, the one with the most weight was the closing price, with a value of 0.98. This isn’t very surprising, as the model essentially uses the closing price to predict the next day's closing price, which is often quite similar to the previous day's closing price. If we drop the closing price from the feature list, the highest coefficient becomes 3.2 for the MACD. MACD closely follows stock prices because it is derived from the stock’s moving averages, which is inherently based on past price data. Dropping close feature linear regression achieves an accuracy of 50%. In essence, this model leverages past price history and a weighted combination of various technical indicators, which are primarily based on historical price data, to predict the next day's closing price. With an accuracy near or at 50%, this model performs as poorly as possible, effectively no better than random guessing. An accuracy below 50% would mean our predictions are consistently wrong, allowing us to reverse the predictions and achieve an accuracy of 1 minus the reported accuracy which would be above 50%. Our model seems to be non-linear, so we decided to try other models that are better suited for predicting non-linear data.
 
 We decided to try a LSTM model because LSTMs (Long Short-Term memory Models) are designed to handle and predict time series data. LSTM are a type of recurrent neural network that are good at capturing long-term trends and patterns in data. This makes them well suited for time series forecasting, where you are trying to predict future values based on past observations. Our LSTM model achieved poor accuracy at 51%. We decided to go with 4 LSTM layers based on both common practice and empirical results we observed. In many LSTM-based models, 3-4 layers are typically used because this depth is often sufficient to capture the complexity in the data without overfitting. Adding more layers doesn't necessarily lead to better performance; in fact, it can sometimes degrade the model's accuracy. For each LSTM layer, we initially used a small number of units, ranging from 50 to 100. We then increased the number of units to between 80 and 120 to improve model accuracy but observed little to no effect. For each layer we used the relu activation function because it doesn’t have the issues of vanishing gradient descent. After each layer we used dropout which randomly sets a fraction of the input units to zero at each update of the training phase. Dropout can reduce overfitting and improve generalization. Despite our attempts to increase the accuracy of our model, we couldn’t achieve any meaningful improvement. We believe this is due to the nature of the data itself. Past price history and technical indicators, which are mathematical functions of past price history, do not reliably indicate the future price of the stock. Without considering real-world factors like company financials and earnings reports, our model, which attempts to predict the day-to-day price of a stock, appears to be failing to identify any patterns or capture any complexity by just looking at past price history. With the exception of the volume feature, we are relying on the variable we are trying to predict to forecast its own future values, which has proven to be ineffective for achieving meaningful or accurate predictions.
+
+To address the limitations observed with logistic regression, neural networks, and LSTM models, we experimented with ensemble learning methods using XGBoost (Extreme Gradient Boosting) and Random Forest. Both models are well-suited for capturing complex, non-linear relationships in the data, making them a good fit for the unpredictable nature of stock price movements.
+
+XGBoost is a highly efficient implementation of gradient boosting, optimizing a differentiable loss function through an iterative process to correct errors made by existing models. This results in a strong predictive model capable of handling intricate patterns within the data. Random Forest, on the other hand, constructs multiple decision trees during training and averages their predictions to reduce overfitting, providing a robust and stable model.
+
+Given the strengths of both models, we combined their predictions in an ensemble approach. By averaging the predictions from XGBoost and Random Forest, the ensemble model leverages the strengths of both, reducing variance (a strength of Random Forest) and bias (a strength of XGBoost). This combination aimed to enhance predictive performance by capturing a broader range of patterns and trends in the stock price data.
+
+The ensemble model demonstrated a slight improvement over individual models. Across different splits, the ensemble model achieved an accuracy of around 48%-57%. Precision and recall metrics varied between splits, indicating a more balanced performance in some cases. For example, in certain splits, precision and recall for class 1 (price increase) were closer to those for class 0 (price decrease), suggesting better generalization.
+
+Despite this improvement, the ensemble model's performance highlights the inherent challenges in predicting stock prices. The accuracy, while slightly better, still hovers around the 50% mark, emphasizing the difficulty of relying solely on historical price data and technical indicators. Stock prices are influenced by numerous factors, including market sentiment, economic events, and company-specific news, which were not captured by our models.
+
+The results of the ensemble model are consistent with the understanding that stock prices are inherently unpredictable and influenced by external factors. While combining models showed some benefit, the limitations of our data and approach were evident. The ensemble model's slight improvement suggests that combining different models can help capture more patterns, but there are still significant limitations.
 
 Stock prices can be highly volatile and tesla stock price is no exception to this fact. Stock prices are influenced by numerous unpredictable factors such as economic indicators, political events, market sentiment, and company-specific news. Our model does not take any of of these factors into account. Our model sole used technical indicators which are derived directly from previous price history. Using technical indicators has several implications. By only using technical indicators the model ignores fundamental factors such as earning reports and other financial information about the underlying company. 
 
