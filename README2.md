@@ -187,6 +187,6 @@ I developed both the linear regression and LSTM models and then worked on the wr
 
 Rishika Kejriwal:
 
-Vandita Jain: 
+Vandita Jain: I helped with selecting the dataset. Alongside, I attended all of the meetings and provided my insights on the work we together did as a team on zoonm. I also helped in writing the Introduction and Comclusion. Apart from this, I also regularly interacted with the teaching staff and professors to get their valuable opinions.
 
 
