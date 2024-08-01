@@ -138,8 +138,6 @@ One issue we noticed is that small increases in price, such as a few cents, are 
 This approach might cause the model to miss important patterns. For instance, if a certain pattern exists where a spike in price follows an increase in trading volume, but this pattern occurs infrequently, the model may struggle to detect it. If, out of ten instances, nine show low trading volume with a minor price increase and one shows high trading volume with a significant price increase, the model might not learn the significance of the high trading volume scenario because the frequent low volume cases dominate the training data. As a result, the model might not accurately capture the relationship between trading volume and substantial price increases.
 
 
-In our logistic regression model, we aimed to predict whether the stock price would increase or decrease. One issue we noticed is that small increases in price, such as a few cents, are classified the same way as larger increases, such as 20%. For example, if the stock price ends slightly higher or significantly higher, both scenarios are classified as a "1," which could lead to inaccuracies in our model. This approach might cause the model to miss important patterns. For instance, if a certain pattern exists where a spike in price follows an increase in trading volume, but this pattern occurs infrequently, the model may struggle to detect it. If, out of ten instances, nine show low trading volume with a minor price increase and one shows high trading volume with a significant price increase, the model might not learn the significance of the high trading volume scenario because the frequent low volume cases dominate the training data. As a result, the model might not accurately capture the relationship between trading volume and substantial price increases.
-
 Given the TA feedback, we have tried using logistic regression with SMOTE() in order to reduce bias and imporve upon logistic regression. This can be found in [Models_resampled_without_technical_indicators](https://github.com/JasonMorris1/CSE151_Tesla_Stock_Prediction/blob/main/Models_resampled_without_technical_indicators.ipynb)
 
 
@@ -160,8 +158,16 @@ Stock prices can be highly volatile and tesla stock price is no exception to thi
 # Conclusion 
 ***This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.***
 
+Predicting stock market prices is notoriously difficult due to the inherent randomness and the multitude of factors influencing the market. The market is affected by a wide array of unpredictable events and behaviors, making it challenging to create a model that can consistently predict stock prices accurately. Additionally, not all market participants act rationally, which adds another layer of difficulty to predicting stock prices. While models like LSTM (Long Short-Term Memory) networks and other neural networks offer some potential, relying solely on historical stock prices is often unrealistic for making accurate predictions. If we were able to achieve high accuracy with such simple models, it would imply that we could generate exorbitant profits consistently. However, if predicting stock prices were this straightforward, every hedge fund and trading company would already be using these models, leading to the market pricing in this new information almost instantaneously.
 
+We can conclude that the models we explored are insufficient for accurately predicting future stock price movement when given a database solely consisting of technical indicators. It is likely that a different dataset containing more indicators that are not derived from price data, or exploring more complex types of models, would yield different results.  
 
+To improve the accuracy of our model, we propose future research that incorporates additional indicators, especially those not derived from price history. These might include companies' financial information, measures of market sentiment, company profitability, and possibly large language models models that can interpret news releases from companies. Furthermore, exploring models like GARCH (Generalized Autoregressive Conditional Heteroskedasticity) can be beneficial. GARCH models are particularly useful for modeling financial time series data with time-varying volatility, capturing the clustering of high and low volatility periods often observed in stock prices. Overall, while the task is challenging, these enhancements could lead to more  accurate predictions, helping us better understand and predict stock price movements.
+
+# Works Cited 
+1: [History of the Stock Market](https://www.sofi.com/learn/content/history-of-the-stock-market/#:~:text=Who%20Created%20the%20Stock%20Market,Amsterdam%20stock%20exchange%20was%20created)
+
+2:  "History of 401(k) Plans: An Update" (PDF). Employee Benefit Research Institute. 2018-11-05
 
 
 # Statement of collaboration 
