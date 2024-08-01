@@ -12,6 +12,28 @@ Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tes
 # Figures
 Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.
 
+![Tesla stock price graph](/plots/stock_price_img.png)
+#### Figure 1. Tesla Stock Price
+
+![Pairplot graph](/plots/pair_plot.png)
+#### Figure 2. PairPlot with histogram on diagonals
+
+![Heatmap graph](/plots/heat_map.png)
+#### Figure 3. correlation coefficient heatmap
+
+
+![SMA PLOT](/plots/sma.png)
+#### Figure 4
+
+
+![bollinger_bands](/plots/bollinger_bands.png)
+#### Figure 5
+
+![RSI](/plots/rsi.png)
+#### Figure 6 RSI
+
+
+
 # Methods 
 This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
  Note: A methods section does not include any why. the reason why will be in the discussion section. This is just a summary of your methods
