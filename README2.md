@@ -173,8 +173,8 @@ We have also tried [Linear Regression](https://github.com/JasonMorris1/CSE151_Te
 
 
 # Statement of collaboration 
-This is a statement of contribution by each member. This will be taken into consideration when making the final grade for each member in the group. Did you work as a team? was there a team leader? project manager? coding? writer? etc. Please be truthful about this as this will determine individual grades in participation. There is no job that is better than the other. If you did no code but did the entire write up and gave feedback during the steps and collaborated then you would still get full credit. If you only coded but gave feedback on the write up and other things, then you still get full credit. If you managed everyone and the deadlines and setup meetings and communicated with teaching staff only then you get full credit. Every role is important as long as you collaborated and were integral to the completion of the project. If the person did nothing. they risk getting a big fat 0. Just like in any job, if you did nothing, you have the risk of getting fired. Teamwork is one of the most important qualities in industry and academia!
-Format: Start with Name: Title: Contribution. If the person contributed nothing then just put in writing: Did not participate in the project.
+
+This project has been completed by all the members as a team. We hosted regular meetings to discuss the project and make project. Everyone shared their opinions and made their contributions as mentioned below.
 
 Aarush Mehrotra:
 I helped form the group and schedule many of our discussions, especially in the first few weeks. I contributed to discussions about picking a dataset; helped with the logistic regression, linear regression and XGBoost models; and usually submitted milestones to Gradescope and added team members to the submission. 
@@ -185,8 +185,6 @@ Jason Morris:
 I developed both the linear regression and LSTM models and then worked on the write-up, specifically focusing on describing these models in the Methods, Results, and Discussion sections. I also worked on creating the figures and helped with writing the conclusion in the report.
 
 
-Rishika Kejriwal:
+Rishika Kejriwal: I helped with coming up with the idea for the project and finding the datasets we could potentially use. I contributed to discussion by suggesting changes and ideas alongwith feedback for data exploration, preprocessing, logistic regression and linear regression. Additionally, I worked on the report alongside by members and worked on formatting the README.md. I was active and present in all group meetings as well as discussed and got inputs from the course staff for our models and project.
 
-Vandita Jain: I helped with selecting the dataset. Alongside, I attended all of the meetings and provided my insights on the work we did together as a team on zoom. I also helped in writing the Introduction and Conclusion. Apart from this, I also regularly interacted with the professor and teaching staff to get their valuable opinions.
-
-
+Vandita Jain: I helped with selecting the dataset. Alongside, I attended all of the meetings and provided my insights on the work we together did as a team on zoonm. I also helped in writing the Introduction and Conclusion. Apart from this, I also regularly interacted with the teaching staff and professors to get their valuable opinions.
