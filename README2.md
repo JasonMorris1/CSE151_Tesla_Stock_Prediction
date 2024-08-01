@@ -3,36 +3,13 @@ The stock market bussines is not unknown to common man. The earliest known stock
 
 We chose this project because we wanted to use Machine Learning concepts taught in class to create an impact in the real world. Our aim with this project was to build a binary prediction Machine Learning model that could predict if the Tesla stock price would go up or down in the future. This model is important as it would allow an individual to study the Tesla stock price which would help them analyze the stock market better. Having a good predictive model would benefit individuals in financial markets in creating effective hedging statergies and reducing potential losses. It might also reduce investment risk by allowing individuals to better model risk to rewards. This intersection between finance and technology not only helps in understanding the market better but also creates space for new innovative techniques to emerge which can help the economy grow. 
 
+![Tesla stock price graph](/plots/stock_price_img.png)
+#### Figure 1. Tesla Stock Price Chart
+
 # Abstract
 The proposed dataset contains time series information about Tesla share prices, along with technical stock analysis features such as the relative strength index (RSI), simple and exponential moving averages, bollinger bands, and more. In our project, we use this information to train models that will predict the close price of the stock the next day (continuous values) and also provide a binary prediction of whether the stock price will go up or down, or stay in the middle (1, -1). This will allow us to explore using different types of models in the class. 
 
 Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tesla-stock-price-with-indicators-10-years)]
-
-
-# Figures
-***Your report should include relevant figures of your choosing to help with the narration of your story, including legends (similar to a scientific paper). For reference you search machine learning and your model in google scholar for reference examples.***
-
-![Tesla stock price graph](/plots/stock_price_img.png)
-#### Figure 1. Tesla Stock Price
-
-![Pairplot graph](/plots/pair_plot.png)
-#### Figure 2. PairPlot with histogram on diagonals
-
-![Heatmap graph](/plots/heat_map.png)
-#### Figure 3. correlation coefficient heatmap
-
-
-![SMA PLOT](/plots/sma.png)
-#### Figure 4
-
-
-![bollinger_bands](/plots/bollinger_bands.png)
-#### Figure 5
-
-![RSI](/plots/rsi.png)
-#### Figure 6 RSI
-
-
 
 # Methods 
 ***This section will include the exploration results, preprocessing steps, models chosen in the order they were executed. You should also describe the parameters chosen. Please make sub-sections for every step. i.e Data Exploration, Preprocessing, Model 1, Model 2, additional models are optional. Please note that models can be the same i.e. DNN but different versions of it if they are distinct enough. Changes can not be incremental. You can put links here to notebooks and/or code blocks using three ` in markup for displaying code. so it would look like this: ``` MY CODE BLOCK ```
@@ -41,9 +18,26 @@ Dataset used - [[Tesla Stock Price](https://www.kaggle.com/datasets/aspillai/tes
 ## Data exploration 
 Our preprocessing began with an exploration of the dataset, using pandas methods such as `head()` and `describe()`. Additionally, we used histograms, pairplots, and correlation matrix visualizations to explore different features of our data and how various columns related to each other. Lastly, we did basic validation to check for NaNs and conflicting data types. 
 
-As a result of our preprocessing, we removed multiple columns to avoid endogenous variable situations, where the model loses accuracy because features are influenced by each other. This would have led to a case where the coefficients from the future model we build would not have been accurate. Specifically, we removed the open, high, and low prices and kept the close prices. This simplifies the dataset, our model, and the task at hand. On the feature side, when we have technical indicators with different time frames we kept only one, such as a Relative Strength Index (RSI) for only 14 day periods instead of both 14 and 7 day periods. A similar change was made for Average True Range (ATR) values, where we also kept the 14 day measurement. For Commodity Channel Index (CCI) values, we kept the 7 day period and dropped the 14 day period measurements. 
+![Pairplot graph](/plots/pair_plot.png)
+#### Figure 2. PairPlot with histogram on diagonals
+
+As a result of our preprocessing, we removed multiple columns to avoid endogenous variable situations, where the model loses accuracy because features are influenced by each other. This would have led to a case where the coefficients from the future model we build would not have been accurate. Specifically, we removed the open, high, and low prices and kept the close prices. This simplifies the dataset, our model, and the task at hand. 
+
+![Heatmap graph](/plots/heat_map.png)
+#### Figure 3. Correlation coefficient heatmap
+
+On the feature side, when we have technical indicators with different time frames we kept only one, such as a Relative Strength Index (RSI) for only 14 day periods instead of both 14 and 7 day periods. A similar change was made for Average True Range (ATR) values, where we also kept the 14 day measurement. For Commodity Channel Index (CCI) values, we kept the 7 day period and dropped the 14 day period measurements. At first, we had added 2 new columns to get the upper bollinger band and median of the bollinger band from the dataset's provided lower bollinger band column. However, after considering the correlation between these columns, we decided to only use 1 of the 3 and dropped the synthetic upper and median columns from our dataset. 
+
+![RSI](/plots/rsi.png)
+#### Figure 4. TSLA RSI chart 
+
+![bollinger_bands](/plots/bollinger_bands.png)
+#### Figure 5. TSLA Bollinger Bands against closing price 
 
 For simple and exponential moving averages (SMA/EMA), we realized the values were very similar to each other. As a result, we only kept the 100-day EMA value. This both simplified our models and helped avoid endogenous variables in the dataset. 
+![SMA PLOT](/plots/sma.png)
+#### Figure 4. Chart of various TSLA SMA/EMA indicators
+
 ## Preprocessing 
 
 ## Model 1
