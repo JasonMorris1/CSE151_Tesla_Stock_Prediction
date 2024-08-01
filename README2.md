@@ -134,8 +134,6 @@ The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.
 # Discussion 
 ***This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!***
 
-
-
 In our logistic regression model, we aimed to predict whether the stock price would increase or decrease. We converted our numerical data into binary classifications by subtracting the closing price from the next day's closing price and then classifying the result as "1" if the price increased and "0" if it decreased.
 One issue we noticed is that small increases in price, such as a few cents, are classified the same way as larger increases, such as 20%. For example, if the stock price ends slightly higher or significantly higher, both scenarios are classified as a "1," which could lead to inaccuracies in our model.
 This approach might cause the model to miss important patterns. For instance, if a certain pattern exists where a spike in price follows an increase in trading volume, but this pattern occurs infrequently, the model may struggle to detect it. If, out of ten instances, nine show low trading volume with a minor price increase and one shows high trading volume with a significant price increase, the model might not learn the significance of the high trading volume scenario because the frequent low volume cases dominate the training data. As a result, the model might not accurately capture the relationship between trading volume and substantial price increases.
@@ -190,7 +188,6 @@ I worked on initial data processing and collaborated on features selection. I ev
 
 Jason Morris:
 I developed both the linear regression and LSTM models and then worked on the write-up, specifically focusing on describing these models in the Methods, Results, and Discussion sections. I also worked on creating the figures and helped with writing the conclusion in the report.
-
 
 Rishika Kejriwal: I helped with coming up with the idea for the project and finding the datasets we could potentially use. I contributed to discussion by suggesting changes and ideas alongwith feedback for data exploration, preprocessing, logistic regression and linear regression. Additionally, I worked on the report alongside by members and worked on formatting the README.md. I was active and present in all group meetings as well as discussed and got inputs from the course staff for our models and project.
 
