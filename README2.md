@@ -36,7 +36,7 @@ On the feature side, when we have technical indicators with different time frame
 
 For simple and exponential moving averages (SMA/EMA), we realized the values were very similar to each other. As a result, we only kept the 100-day EMA value. This both simplified our models and helped avoid endogenous variables in the dataset. 
 ![SMA PLOT](/plots/sma.png)
-#### Figure 4. Chart of various TSLA SMA/EMA indicators
+#### Figure 6. Chart of various TSLA SMA/EMA indicators
 
 ## Preprocessing 
 
@@ -59,10 +59,10 @@ linreg.fit(X_train, y_train)
 y_pred = linreg.predict(X_test)
 ```
 
-## Model 3 - Ensemble XGBoost and RandomForest @Anuj
+## Model 3 - Ensemble XGBoost and RandomForest
 The ensemble model combines XGBoost and Random Forest to enhance predictive performance. XGBoost is initialized with 'logloss' as the evaluation metric and trained on the training data, followed by predictions on the test set. Similarly, Random Forest is initialized with 100 trees and trained on the same data. Their predictions are then combined using a weighted average, with Random Forest predictions given twice the weight, creating a robust ensemble that reduces variance and bias.
 
-```
+```python
 # XGBoost model
 xgb_model = XGBClassifier(eval_metric='logloss')
 xgb_model.fit(X_train, y_train)
