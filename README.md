@@ -172,7 +172,7 @@ Aarush Mehrotra:
 I helped form the group and schedule many of our discussions, especially in the first few weeks. I contributed to discussions about picking a dataset; helped with the logistic regression, linear regression and XGBoost models; and usually submitted milestones to Gradescope and added team members to the submission. 
 
 Anuj Jain:
-I worked on initial data processing and collaborated on features selection. I eventually created Neural Nets, XGBoost and Ensemble models. I took feddback from TA on possible ways to improve model and incorporated them into improved logistic regression file without technical indicators. Finally, I created generic functions such as Pie Charts and Confusion Matrix to help with results comparison across models.
+I worked on initial data processing and collaborated on features selection. I eventually created Neural Nets, Random Forest and Ensemble models. I took feedback from TA on possible ways to improve model and incorporated them into improved logistic regression file without technical indicators. Finally, I created generic functions such as Pie Charts and Confusion Matrix to help with results comparison across models.
 
 Jason Morris:
 I developed both the linear regression and LSTM models and then worked on the write-up, specifically focusing on describing these models in the Methods, Results, and Discussion sections. I also worked on creating the figures and helped with writing the conclusion in the report.
