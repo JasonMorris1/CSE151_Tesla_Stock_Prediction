@@ -65,9 +65,24 @@ linreg.fit(X_train, y_train)
 y_pred = linreg.predict(X_test)
 ```
 
-## Model ? - XGB @Anuj
+## Model 3 - Ensemble XGBoost and RandomForest @Anuj
+The ensemble model combines XGBoost and Random Forest to enhance predictive performance. XGBoost is initialized with 'logloss' as the evaluation metric and trained on the training data, followed by predictions on the test set. Similarly, Random Forest is initialized with 100 trees and trained on the same data. Their predictions are then combined using a weighted average, with Random Forest predictions given twice the weight, creating a robust ensemble that reduces variance and bias.
 
-## Model 3 - LSTM
+```
+# XGBoost model
+xgb_model = XGBClassifier(eval_metric='logloss')
+xgb_model.fit(X_train, y_train)
+y_pred_xgb = xgb_model.predict(X_test)
+
+# Random Forest model
+rf_model = RandomForestClassifier(n_estimators=100, random_state=0)
+rf_model.fit(X_train, y_train)
+y_pred_rf = rf_model.predict(X_test)
+
+# Combine the predictions using a simple average
+y_pred_ensemble = (y_pred_xgb + 2*y_pred_rf) / 3
+```
+## Model 4 - LSTM
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For our LSTM model, we utilized 4 LSTM layers, each followed by a dropout layer, and concluded with a final dense layer containing a single unit. We ran this model using both technical analysis features and price as the sole feature. The LSTM model uses the data from the previous 40 days to predict the stock price on each day. For each LSTM layer, we initially used a small number of units, ranging from 50 to 100. We then increased the number of units to between 80 and 120. For each layer we used the relu activation function.
 
@@ -106,8 +121,13 @@ The model accruay was 51%. The recall for the stock price will increase class wa
 
 ![Linear Regression Plot](/plots/linear_regression_pie.png)
 
+## Model 4: Ensemble
+The ensemble model demonstrated a slight improvement over individual models. Across different splits, the ensemble model achieved an accuracy of around 48%-57%. Precision and recall metrics varied between splits, indicating a more balanced performance in some cases. 
+![Ensemble Pie Chart](/plots/Ensemble_classification.png)
 
-## Model 3: LSTM
+![Ensemble Classification](/plots/Ensemble_pie.png)
+
+## Model 4: LSTM
 
 The LSTM model had a mean squarred error of 997 and a mean absolute error of 24.41. Coverting the price prediction into classification gives an accuracy of 52%. For the prediction the stock price will increase we had a prevision of 0.43 and recall of 0.54. The prediction the stock will decrease had a precision of 0.62 and recall of 0.51.
 ![LSTM Plot](/plots/lstm_fig.png)
